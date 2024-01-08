@@ -47,6 +47,7 @@
         android:id="@+id/txtResult"
         app:layout_constraintTop_toBottomOf="@+id/editNumberTwo"
         app:layout_constraintStart_toStartOf="@+id/editNumberTwo"
-        app:layout_constraintEnd_toEndOf="@+id/editNumberTwo" />
+        app:layout_constraintEnd_toEndOf="@+id/editNumberTwo"
+        app:layout_constraintBottom_toBottomOf="@id/btnAdd"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
