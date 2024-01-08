@@ -1,6 +1,9 @@
 package com.novelitech.viewsexampleskotlin
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,34 +16,27 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.novelitech.viewsexampleskotlin.ui.theme.ViewsExamplesKotlinTheme
 
 class MainActivity : ComponentActivity() {
+
+    lateinit var button: Button
+    lateinit var result: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            ViewsExamplesKotlinTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+        setContentView(R.layout.activity_challenge_one)
+
+        button = findViewById(R.id.btnAdd)
+        result = findViewById(R.id.txtResult)
+
+        button.setOnClickListener {
+
+            val numberOne = findViewById<EditText>(R.id.editNumberOne).text
+            val numberTwo = findViewById<EditText>(R.id.editNumberTwo).text
+
+            if(numberOne.isEmpty() || numberOne.isBlank() || numberTwo.isEmpty() || numberTwo.isBlank()) {
+                return@setOnClickListener
             }
+
+            result.text = (numberOne.toString().toInt() + numberTwo.toString().toInt()).toString()
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ViewsExamplesKotlinTheme {
-        Greeting("Android")
-    }
-}
